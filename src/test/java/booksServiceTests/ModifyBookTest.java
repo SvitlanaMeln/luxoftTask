@@ -9,6 +9,7 @@ import okhttp3.ResponseBody;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -18,6 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Feature("POST /api/v1/books and PUT /api/v1/books/{id} APIs")
 @ExtendWith(AllureJunit5.class)
+//@ExtendWith(RetryExtension.class)
 public class ModifyBookTest {
     private BooksService booksService;
     private CreateBookRequest createBookRequest;
@@ -50,10 +52,10 @@ public class ModifyBookTest {
                 .isEqualTo("Book has been deleted successfully");
     }
 
-//    @RepeatedTest(3)
-    @Test
+    @RepeatedTest(value = 3, name = "Repetition {currentRepetition} of {totalRepetitions}")
     @Description("Ensure that POST /api/v1/books endpoint creates valid entity")
-    public void testCreateBook() throws IOException {
+    public void testCreateBook(RepetitionInfo repetitionInfo) throws IOException {
+        System.out.println("Repetition: " + repetitionInfo.getCurrentRepetition());
 
         assertThat(createBookResponse.getName())
                 .as("Name of book in response should be the same as in request")
@@ -80,9 +82,10 @@ public class ModifyBookTest {
                 .isEqualTo(createBookRequest.getPrice());
     }
 
-    @Test
+    @RepeatedTest(value = 3, name = "Repetition {currentRepetition} of {totalRepetitions}")
     @Description("Ensure that PUT /api/v1/books/{id} endpoint does valid update of specified entity")
-    public void testUpdateBook() {
+    public void testUpdateBook(RepetitionInfo repetitionInfo) {
+        System.out.println("Repetition: " + repetitionInfo.getCurrentRepetition());
 
         var updateBookRequest = CreateBookRequest.builder()
                 .name("Test Book C")
