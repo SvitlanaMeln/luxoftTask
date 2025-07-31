@@ -3,14 +3,16 @@ package booksServiceTests;
 import api.models.BookResponse;
 import api.models.CreateBookRequest;
 import api.services.BooksService;
+import api.steps.BookSteps;
+import api.steps.CreateBookSteps;
+import api.steps.DeleteBookSteps;
+import api.steps.UpdateBookSteps;
 import io.qameta.allure.*;
 import io.qameta.allure.junit5.AllureJunit5;
-import okhttp3.ResponseBody;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.io.IOException;
@@ -19,37 +21,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Feature("POST /api/v1/books and PUT /api/v1/books/{id} APIs")
 @ExtendWith(AllureJunit5.class)
-//@ExtendWith(RetryExtension.class)
 public class ModifyBookTest {
-    private BooksService booksService;
+    private final CreateBookSteps createBookSteps = new CreateBookSteps();
+    private final DeleteBookSteps deleteBookSteps = new DeleteBookSteps();
+    private final UpdateBookSteps updateBookSteps = new UpdateBookSteps();
     private CreateBookRequest createBookRequest;
     private BookResponse createBookResponse;
 
     @BeforeEach
     void setUp() {
         System.out.println("This runs before each test");
-        booksService = new BooksService();
-
-        createBookRequest = CreateBookRequest.builder()
-                .name("Refactoring: Improving the Design of Existing Code")
-                .author("Martin Fowler")
-                .publication("Addison-Wesley Professional")
-                .category("Programming")
-                .pages(448)
-                .price(35.50)
-                .build();
-
-        createBookResponse = booksService.createBook(createBookRequest);
+        createBookRequest = createBookSteps.buildCreateBookRequest();
+        createBookResponse = createBookSteps.createBook(createBookRequest);
     }
 
     @AfterEach
     void tearDown() throws IOException {
         System.out.println("This runs after each test");
-        ResponseBody deleteBookResponse = booksService.deleteBook(createBookResponse.getId());
-
-        assertThat(deleteBookResponse.string())
-                .as("Book should be deleted")
-                .isEqualTo("Book has been deleted successfully");
+        deleteBookSteps.deleteBook(createBookResponse.getId());
     }
 
     @RepeatedTest(value = 3, name = "Repetition {currentRepetition} of {totalRepetitions}")
@@ -86,17 +75,9 @@ public class ModifyBookTest {
     @Description("Ensure that PUT /api/v1/books/{id} endpoint does valid update of specified entity")
     public void testUpdateBook(RepetitionInfo repetitionInfo) {
         System.out.println("Repetition: " + repetitionInfo.getCurrentRepetition());
+        var updateBookRequest = updateBookSteps.buildUpdateRequest();
 
-        var updateBookRequest = CreateBookRequest.builder()
-                .name("Test Book C")
-                .author("Alan Poe")
-                .publication("Addison-Wesley 2008")
-                .category("Fiction")
-                .pages(150)
-                .price(54.5)
-                .build();
-
-        var updateBookResponse = booksService.updateBook(updateBookRequest, createBookResponse.getId());
+        var updateBookResponse = updateBookSteps.updateBook(updateBookRequest, createBookResponse.getId());
 
         assertThat(updateBookResponse.getName())
                 .as("Name of book in response should be the same as in request")

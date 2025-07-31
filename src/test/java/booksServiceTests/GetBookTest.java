@@ -1,6 +1,7 @@
 package booksServiceTests;
 
 import api.services.BooksService;
+import api.steps.GetBookSteps;
 import io.qameta.allure.*;
 import io.qameta.allure.junit5.AllureJunit5;
 import org.junit.jupiter.api.Test;
@@ -12,55 +13,38 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(AllureJunit5.class)
 public class GetBookTest {
 
-    private BooksService booksService;
+    private final GetBookSteps getBookSteps = new GetBookSteps();
 
     @Test
     @Description("Ensure that GET /api/v1/books endpoint returns list of books")
     public void testGetBooks() {
-        booksService = new BooksService();
+        var books = getBookSteps.fetchBooks();
 
-        var books = booksService.getBooks();
-
-        assertThat(books.size())
-                .as("Books response should contain books")
-                .isGreaterThan(1);
+        getBookSteps.assertBooksReturned(books);
     }
 
     @Test
     @Description("Ensure that GET /api/v1/books/{id} endpoint returns valid entity")
     public void testGetSpecifiedBookById() {
-        booksService = new BooksService();
+        var books = getBookSteps.fetchBooks();
 
-        var books = booksService.getBooks();
+        getBookSteps.assertBooksNotEmpty(books);
 
-        assertThat(books)
-                .as("Books response should contain books")
-                .isNotEmpty();
+        var id = getBookSteps.extractFirstBookId(books);
+        var bookResponse = getBookSteps.fetchBookById(id);
 
-        var id = books.stream().findFirst().get().getId();
-        var bookResponse = booksService.getBook(id);
-
-        assertThat(bookResponse.getId())
-                .as("Id value from response should be the same as in request")
-                .isEqualTo(id);
+        getBookSteps.assertIdMatches(bookResponse, id);
     }
 
     @Test
     @Description("Ensure that GET /api/v1/books and GET /api/v1/books/{id} endpoints return the same entity after filtration by Id")
     public void testGetBookForBothApiCalls() {
-        booksService = new BooksService();
+        var books = getBookSteps.fetchBooks();
+        var id = getBookSteps.selectRandomBookId(books);
 
-        var booksResponse = booksService.getBooks();
-        var id = booksResponse.stream().findAny().get().getId();
+        var singleBook = getBookSteps.fetchBookById(id);
 
-        var bookResponse = booksService.getBook(id);
-
-        assertThat(booksResponse.stream()
-                .filter(b -> b.getId().equals(id))
-                .toList().get(0)
-                .getName())
-                .as("Name of book for id: <%s> should be the same for both API calls", id)
-                .isEqualTo(bookResponse.getName());
+        getBookSteps.assertBookNamesMatch(books, singleBook, id);
     }
 
 }

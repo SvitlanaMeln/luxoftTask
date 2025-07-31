@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e4047d0-c088-4710-80a5-5cb00139e052" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/steps/BookSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/steps/CreateBookSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/steps/DeleteBookSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/steps/GetBookSteps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/steps/UpdateBookSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/booksServiceTests/DeleteBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/booksServiceTests/DeleteBookTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/booksServiceTests/GetBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/booksServiceTests/GetBookTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/booksServiceTests/ModifyBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/booksServiceTests/ModifyBookTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,23 +52,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/svit4/Workspace/luxoft.task",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/svit4/Workspace/luxoft.task&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\svit4\Workspace\luxoft.task" />
@@ -72,7 +78,22 @@
       <recent name="C:\Users\svit4\Workspace\luxoft.task\src\main\java\api" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ModifyBookTest.testUpdateBook">
+  <component name="RunManager" selected="JUnit.ModifyBookTest">
+    <configuration name="DeleteBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="luxoft.task" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="booksServiceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="booksServiceTests" />
+      <option name="MAIN_CLASS_NAME" value="booksServiceTests.DeleteBookTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GetBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="luxoft.task" />
       <extension name="coverage">
@@ -88,7 +109,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ModifyBookTest.testCreateBook (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ModifyBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="luxoft.task" />
       <extension name="coverage">
         <pattern>
@@ -98,8 +119,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="booksServiceTests" />
       <option name="MAIN_CLASS_NAME" value="booksServiceTests.ModifyBookTest" />
-      <option name="METHOD_NAME" value="testCreateBook()" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -115,22 +135,6 @@
       <option name="PACKAGE_NAME" value="booksServiceTests" />
       <option name="MAIN_CLASS_NAME" value="booksServiceTests.ModifyBookTest" />
       <option name="METHOD_NAME" value="testCreateBook(org.junit.jupiter.api.RepetitionInfo)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ModifyBookTest.testCreateBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="luxoft.task" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="booksServiceTests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="booksServiceTests" />
-      <option name="MAIN_CLASS_NAME" value="booksServiceTests.ModifyBookTest" />
-      <option name="METHOD_NAME" value="testCreateBook" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -154,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ModifyBookTest" />
+        <item itemvalue="JUnit.DeleteBookTest" />
+        <item itemvalue="JUnit.GetBookTest" />
         <item itemvalue="JUnit.ModifyBookTest.testUpdateBook" />
         <item itemvalue="JUnit.ModifyBookTest.testCreateBook (2)" />
-        <item itemvalue="JUnit.ModifyBookTest.testCreateBook (1)" />
-        <item itemvalue="JUnit.ModifyBookTest.testCreateBook" />
-        <item itemvalue="JUnit.GetBookTest" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +180,8 @@
       <workItem from="1753909182062" duration="3773000" />
       <workItem from="1753912979607" duration="1238000" />
       <workItem from="1753914236509" duration="897000" />
-      <workItem from="1753979809610" duration="5198000" />
+      <workItem from="1753979809610" duration="7711000" />
+      <workItem from="1753988632065" duration="7314000" />
     </task>
     <servers />
   </component>
@@ -193,6 +198,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/booksServiceTests/DeleteBookTest.java</url>
+          <line>26</line>
+          <properties class="booksServiceTests.DeleteBookTest" method="setUp">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

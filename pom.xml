@@ -86,6 +86,12 @@
             <artifactId>allure-java-commons</artifactId>
             <version>2.24.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.27.3</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
